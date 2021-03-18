@@ -1,5 +1,5 @@
 package com.arny.dataimporter.data.xml
 
 interface DataImporter {
-    fun importData(): String
+    fun importData(data: String?): String
 }

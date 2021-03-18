@@ -9,6 +9,6 @@ class HomeViewModel(private val dataImporter: DataImporter) : ViewModel() {
     val text = mutableLiveData("This is home Fragment")
 
     fun import() {
-        text.value = dataImporter.importData()
+        text.value = dataImporter.importData("<data><phone><company>Samsung</company></phone></data>")
     }
 }
