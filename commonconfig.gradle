@@ -7,7 +7,6 @@ android {
     defaultConfig {
         minSdkVersion versions.minSdkVersion
         targetSdkVersion versions.targetSdkVersion
-        applicationId 'com.arny.metersreading'
         versionCode vMajor * 100 + vMinor * 10 + vBuild
         def name = "${vMajor}" + ".${vMinor}" + ".${vBuild}"
         versionName "v$name($versionCode)"
@@ -70,12 +69,5 @@ android {
 
     testOptions.unitTests.all {
         jvmArgs "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap"
-    }
-}
-android.applicationVariants.all { variant ->
-    variant.outputs.all {
-        if (outputFileName.endsWith('.apk')) {
-            outputFileName = "metersreading-${variant.versionName}-${buildType.name}.apk"
-        }
     }
 }
