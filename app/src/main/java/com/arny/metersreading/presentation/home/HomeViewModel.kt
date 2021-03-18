@@ -1,4 +1,4 @@
-package com.arny.metersreading.ui.home
+package com.arny.metersreading.presentation.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

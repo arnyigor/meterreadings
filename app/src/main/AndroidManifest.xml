@@ -4,13 +4,14 @@
 
     <application
         android:allowBackup="true"
+        android:name=".MetersReadingApp"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MetersReading">
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.MetersReading.NoActionBar">
             <intent-filter>

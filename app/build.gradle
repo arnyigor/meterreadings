@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
 }
+apply from: "$rootProject.projectDir//ktlint.gradle"
 apply from: "$dep_aliases"
 apply from: "$rootProject.projectDir/commonconfig.gradle"
 
@@ -17,5 +18,6 @@ dependencies {
     constraintlayout()
     navigation()
     lifecycle()
+    dagger()
     tests()
 }
