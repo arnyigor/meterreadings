@@ -1,7 +1,7 @@
 package com.arny.metersreading.presentation.home
 
 import androidx.lifecycle.ViewModel
-import com.arny.androidutils.mutableLiveData
+import com.arny.androidutils.livedata.mutableLiveData
 import com.arny.dataimporter.data.xml.DataImporter
 
 class HomeViewModel(private val dataImporter: DataImporter) : ViewModel() {

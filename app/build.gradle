@@ -19,6 +19,7 @@ dependencies {
     implementation project(path: ':dataimporter')
     implementation project(path: ':core')
     kotlin()
+    fragment()
     preference()
     appcompat()
     material()

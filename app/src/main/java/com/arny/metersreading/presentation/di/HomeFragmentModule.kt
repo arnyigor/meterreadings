@@ -32,7 +32,7 @@ interface HomeFragmentModule {
         @IntoMap
         @ViewModelKey(HomeViewModel::class)
         fun provideHomeViewModel(
-            dataImporter: DataImporter,
+            dataImporter: DataImporter
         ): ViewModel = HomeViewModel(dataImporter)
     }
 

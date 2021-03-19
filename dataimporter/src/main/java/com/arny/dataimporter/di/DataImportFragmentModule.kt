@@ -2,6 +2,7 @@ package com.arny.dataimporter.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.arny.dataimporter.data.files.FilesRepository
 import com.arny.dataimporter.data.xml.DataImporter
 import com.arny.dataimporter.presentation.DataImportFragment
 import com.arny.dataimporter.presentation.DataImportViewModel
@@ -33,7 +34,8 @@ interface DataImportFragmentModule {
         @ViewModelKey(DataImportViewModel::class)
         fun provideHomeViewModel(
             dataImporter: DataImporter,
-        ): ViewModel = DataImportViewModel(dataImporter)
+            filesRepository: FilesRepository
+        ): ViewModel = DataImportViewModel(dataImporter, filesRepository)
     }
 
     @Module

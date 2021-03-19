@@ -15,7 +15,7 @@ import javax.inject.Singleton
         AndroidSupportInjectionModule::class,
         AppModule::class,
         DataImporterModule::class,
-        UiModule::class,
+        UiModule::class
     ]
 )
 interface AppComponent : AndroidInjector<MetersReadingApp> {

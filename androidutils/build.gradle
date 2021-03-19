@@ -12,5 +12,7 @@ android {
 dependencies {
     kotlin()
     lifecycle()
+    fragment()
+    activity()
     tests()
 }

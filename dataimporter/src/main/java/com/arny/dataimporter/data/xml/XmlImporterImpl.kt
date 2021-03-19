@@ -12,7 +12,7 @@ class XmlImporterImpl @Inject constructor() : DataImporter {
         val toString = StringBuilder().apply {
             while (parser.eventType != XmlPullParser.END_DOCUMENT) {
                 when (parser.eventType) {
-                    XmlPullParser.START_TAG  -> {
+                    XmlPullParser.START_TAG -> {
                         append(parser.name)
                         append("\n")
                         for (i in 0 until parser.attributeCount) {

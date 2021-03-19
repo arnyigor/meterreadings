@@ -1,9 +1,12 @@
 package com.arny.dataimporter.presentation
 
+import android.Manifest
 import android.content.Context
 import android.os.Bundle
 import android.view.*
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import com.arny.androidutils.extentions.requestPermission
 import com.arny.dataimporter.R
 import com.arny.dataimporter.databinding.DataImportFragmentBinding
 import dagger.android.support.AndroidSupportInjection
@@ -14,6 +17,20 @@ class DataImportFragment : Fragment(R.layout.data_import_fragment) {
     @Inject
     lateinit var viewModel: DataImportViewModel
     private lateinit var binding: DataImportFragmentBinding
+
+    private fun launchGetFile() = getFile.launch("*/*")
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+            if (granted) {
+                launchGetFile()
+            }
+        }
+
+    private val getFile =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            viewModel.readFile(uri)
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,8 +58,16 @@ class DataImportFragment : Fragment(R.layout.data_import_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.btnChooseFile.setOnClickListener {
+            requestPermission(
+                requestPermissionLauncher,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                ::launchGetFile
+            )
+        }
         viewModel.data.observe(viewLifecycleOwner, {
-            binding.tvData.text = it
+            binding.tvResult.text = it
         })
     }
 }

@@ -37,5 +37,4 @@ class PreferencesFragment : PreferenceFragmentCompat(),
             else -> false
         }
     }
-
 }
