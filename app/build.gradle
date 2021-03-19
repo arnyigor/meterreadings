@@ -12,6 +12,7 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':preferences')
     kotlin()
     appcompat()
     material()
