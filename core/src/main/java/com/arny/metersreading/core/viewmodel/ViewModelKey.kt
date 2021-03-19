@@ -1,4 +1,4 @@
-package com.arny.metersreading.di
+package com.arny.metersreading.core.viewmodel
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

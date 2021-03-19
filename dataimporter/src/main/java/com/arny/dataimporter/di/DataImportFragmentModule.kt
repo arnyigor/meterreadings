@@ -1,12 +1,12 @@
-package com.arny.metersreading.presentation.di
+package com.arny.dataimporter.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.arny.dataimporter.data.xml.DataImporter
+import com.arny.dataimporter.presentation.DataImportFragment
+import com.arny.dataimporter.presentation.DataImportViewModel
 import com.arny.metersreading.core.di.FragmentScope
 import com.arny.metersreading.core.viewmodel.ViewModelKey
-import com.arny.metersreading.presentation.home.HomeFragment
-import com.arny.metersreading.presentation.home.HomeViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
@@ -14,26 +14,26 @@ import dagger.multibindings.IntoMap
 
 @Module(
     includes = [
-        HomeFragmentModule.ProvideViewModel::class
+        DataImportFragmentModule.ProvideViewModel::class
     ]
 )
-interface HomeFragmentModule {
+interface DataImportFragmentModule {
     @FragmentScope
     @ContributesAndroidInjector(
         modules = [
             InjectViewModel::class
         ]
     )
-    fun contributeFragmentInjector(): HomeFragment
+    fun contributeFragmentInjector(): DataImportFragment
 
     @Module
     class ProvideViewModel {
         @Provides
         @IntoMap
-        @ViewModelKey(HomeViewModel::class)
+        @ViewModelKey(DataImportViewModel::class)
         fun provideHomeViewModel(
             dataImporter: DataImporter,
-        ): ViewModel = HomeViewModel(dataImporter)
+        ): ViewModel = DataImportViewModel(dataImporter)
     }
 
     @Module
@@ -41,7 +41,7 @@ interface HomeFragmentModule {
         @Provides
         fun provideHomeViewModel(
             factory: ViewModelProvider.Factory,
-            target: HomeFragment
-        ) = ViewModelProvider(target, factory).get(HomeViewModel::class.java)
+            target: DataImportFragment
+        ) = ViewModelProvider(target, factory).get(DataImportViewModel::class.java)
     }
 }

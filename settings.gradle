@@ -2,3 +2,4 @@ include ':androidutils'
 include ':dataimporter'
 include ':app'
 rootProject.name = "MetersReading"
+include ':core'
