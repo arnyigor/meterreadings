@@ -2,9 +2,7 @@ package com.arny.dataimporter.presentation
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import com.arny.dataimporter.R
 import com.arny.dataimporter.databinding.DataImportFragmentBinding
@@ -13,13 +11,19 @@ import javax.inject.Inject
 
 class DataImportFragment : Fragment(R.layout.data_import_fragment) {
 
-    companion object {
-        fun newInstance() = DataImportFragment()
-    }
-
     @Inject
     lateinit var viewModel: DataImportViewModel
     private lateinit var binding: DataImportFragmentBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.clear()
+    }
 
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
@@ -37,6 +41,8 @@ class DataImportFragment : Fragment(R.layout.data_import_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        viewModel.data.observe(viewLifecycleOwner, {
+            binding.tvData.text = it
+        })
     }
 }

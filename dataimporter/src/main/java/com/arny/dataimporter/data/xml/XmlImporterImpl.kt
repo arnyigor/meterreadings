@@ -1,16 +1,12 @@
 package com.arny.dataimporter.data.xml
 
-import android.content.Context
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
 import org.xmlpull.v1.XmlPullParserFactory
 import java.io.StringReader
 import javax.inject.Inject
 
-
-class XmlImporterImpl @Inject constructor(
-    private val context: Context
-) : DataImporter {
+class XmlImporterImpl @Inject constructor() : DataImporter {
     override fun importData(data: String?): String {
         val parser = prepareXpp(data)
         val toString = StringBuilder().apply {

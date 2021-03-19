@@ -9,4 +9,12 @@
 
     <string name="menu_home">Home</string>
     <string name="menu_preferences">Настройки</string>
+
+    <!-- Preference Headers -->
+    <string name="import_header">Импорт данных</string>
+    <!-- Preference Titles -->
+    <string name="data_import_title">Импорт</string>
+    <string name="data_import_summary">Импорт данных из других приложений</string>
+    <!-- Preference Keys -->
+    <string name="data_import_key">data_import</string>
 </resources>

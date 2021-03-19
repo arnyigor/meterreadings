@@ -17,9 +17,9 @@ android {
 dependencies {
     implementation project(path: ':androidutils')
     implementation project(path: ':dataimporter')
-    implementation project(path: ':preferences')
     implementation project(path: ':core')
     kotlin()
+    preference()
     appcompat()
     material()
     constraintlayout()

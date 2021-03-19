@@ -1,0 +1,14 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/import_header">
+
+        <Preference
+            app:selectable="true"
+            app:enabled="true"
+            app:key="@string/data_import_key"
+            app:title="@string/data_import_title"
+            app:summary="@string/data_import_summary" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
