@@ -17,6 +17,7 @@ buildscript {
 
 allprojects {
     it.extensions.add("dep_aliases", "$rootProject.projectDir/dependencies.gradle")
+    it.extensions.add("commonconfig", "$rootProject.projectDir/commonconfig.gradle")
     repositories {
         google()
         jcenter()

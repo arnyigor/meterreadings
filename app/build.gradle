@@ -4,15 +4,21 @@ plugins {
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
 }
-apply from: "$rootProject.projectDir//ktlint.gradle"
+apply from: "$rootProject.projectDir/ktlint.gradle"
 apply from: "$dep_aliases"
-apply from: "$rootProject.projectDir/commonconfig.gradle"
+apply from: "$commonconfig"
 
 android {
+    defaultConfig {
+        applicationId 'com.arny.metersreading'
+    }
 }
 
 dependencies {
+    implementation project(path: ':androidutils')
+    implementation project(path: ':dataimporter')
     implementation project(path: ':preferences')
+    implementation project(path: ':core')
     kotlin()
     appcompat()
     material()
@@ -21,4 +27,12 @@ dependencies {
     lifecycle()
     dagger()
     tests()
+}
+
+android.applicationVariants.all { variant ->
+    variant.outputs.all {
+        if (outputFileName.endsWith('.apk')) {
+            outputFileName = "metersreading-${variant.versionName}-${buildType.name}.apk"
+        }
+    }
 }

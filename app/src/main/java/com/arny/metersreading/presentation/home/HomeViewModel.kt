@@ -1,13 +1,14 @@
 package com.arny.metersreading.presentation.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.arny.androidutils.mutableLiveData
+import com.arny.dataimporter.data.xml.DataImporter
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val dataImporter: DataImporter) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    val text = mutableLiveData("This is home Fragment")
+
+    fun import() {
+        text.value = dataImporter.importData("<data><phone><company>Samsung</company></phone></data>")
     }
-    val text: LiveData<String> = _text
 }

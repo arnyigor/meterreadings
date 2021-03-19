@@ -1,4 +1,4 @@
-package com.arny.metersreading.di
+package com.arny.metersreading.core.di
 
 import javax.inject.Scope
 

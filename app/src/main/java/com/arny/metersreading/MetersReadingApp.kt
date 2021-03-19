@@ -9,5 +9,10 @@ class MetersReadingApp : DaggerApplication() {
         .application(this)
         .build()
 
+    override fun onCreate() {
+        super.onCreate()
+        applicationInjector.inject(this)
+    }
+
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> = applicationInjector
 }
