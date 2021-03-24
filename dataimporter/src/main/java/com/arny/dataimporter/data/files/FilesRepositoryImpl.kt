@@ -9,7 +9,7 @@ import javax.inject.Inject
 class FilesRepositoryImpl @Inject constructor(
     private val context: Context
 ) : FilesRepository {
-    override fun getFile(uri: Uri?): File? {
+    override fun getFile(uri: Uri): File? {
         return FilePathUtils.getPath(uri, context)?.let { File(it) }
     }
 }

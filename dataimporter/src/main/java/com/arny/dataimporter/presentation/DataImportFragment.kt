@@ -7,8 +7,10 @@ import android.view.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.arny.androidutils.extentions.requestPermission
+import com.arny.androidutils.extentions.toast
 import com.arny.dataimporter.R
 import com.arny.dataimporter.databinding.DataImportFragmentBinding
+import com.arny.metersreading.core.models.DataResult
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -66,8 +68,19 @@ class DataImportFragment : Fragment(R.layout.data_import_fragment) {
                 ::launchGetFile
             )
         }
-        viewModel.data.observe(viewLifecycleOwner, {
-            binding.tvResult.text = it
+        viewModel.data.observe(viewLifecycleOwner, { result ->
+            when (result) {
+                is DataResult.SUCCESS -> {
+                    binding.tvResult.text = result.data
+                }
+                is DataResult.ERROR -> {
+                    toast(result.exception.toString(requireContext()))
+                }
+                DataResult.NOTHING -> {
+                }
+                is DataResult.PROGRESS -> {
+                }
+            }
         })
     }
 }

@@ -1,6 +1,7 @@
 package com.arny.androidutils.extentions
 
 import android.content.pm.PackageManager
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -25,4 +26,9 @@ fun <T> Fragment.requestPermission(
             resultLauncher.launch(input)
         }
     }
+}
+
+
+fun Fragment.toast(message: String?) {
+    Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
 }

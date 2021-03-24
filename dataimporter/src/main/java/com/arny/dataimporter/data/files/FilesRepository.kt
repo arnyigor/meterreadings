@@ -4,5 +4,5 @@ import android.net.Uri
 import java.io.File
 
 interface FilesRepository {
-    fun getFile(uri: Uri?): File?
+    fun getFile(uri: Uri): File?
 }
