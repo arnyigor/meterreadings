@@ -79,6 +79,7 @@ class DataImportFragment : Fragment(R.layout.data_import_fragment) {
                 DataResult.NOTHING -> {
                 }
                 is DataResult.PROGRESS -> {
+
                 }
             }
         })
