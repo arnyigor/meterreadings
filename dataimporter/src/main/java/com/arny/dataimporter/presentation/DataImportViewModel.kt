@@ -11,7 +11,6 @@ import com.arny.metersreading.core.models.BussinessException
 import com.arny.metersreading.core.models.DataResult
 import com.arny.metersreading.core.models.tryGetResult
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -25,7 +24,6 @@ class DataImportViewModel(
         viewModelScope.launch {
             data.value =  DataResult.PROGRESS(messageRes = R.string.loading)
             data.value = withContext(Dispatchers.IO) {
-                delay(5000)
                 tryGetResult{
                     val content = readContentFromUri(uri)
                     val importData = dataImporter.importData(content)

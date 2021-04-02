@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.*
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.arny.androidutils.extentions.requestPermission
 import com.arny.androidutils.extentions.toast
@@ -71,15 +72,24 @@ class DataImportFragment : Fragment(R.layout.data_import_fragment) {
         viewModel.data.observe(viewLifecycleOwner, { result ->
             when (result) {
                 is DataResult.SUCCESS -> {
+                    binding.progressBar.isVisible = false
+                    binding.tvProgress.isVisible = false
                     binding.tvResult.text = result.data
                 }
                 is DataResult.ERROR -> {
+                    binding.progressBar.isVisible = false
+                    binding.tvProgress.isVisible = false
                     toast(result.exception.toString(requireContext()))
                 }
                 DataResult.NOTHING -> {
+                    binding.progressBar.isVisible = false
+                    binding.tvProgress.isVisible = false
                 }
                 is DataResult.PROGRESS -> {
-
+                    binding.progressBar.isVisible = true
+                    val message = result.toString(requireContext())
+                    binding.tvProgress.isVisible = message.isNullOrBlank().not()
+                    binding.tvProgress.text = message
                 }
             }
         })
