@@ -21,5 +21,6 @@ dependencies {
     navigation()
     lifecycle()
     dagger()
+    jodaTime()
     tests()
 }

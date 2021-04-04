@@ -119,7 +119,7 @@ ext {
         implementation "com.github.terrakok:cicerone:$version"
     }}
 
-    jodaTime = { version = '2.10.8' -> Alias {
+    jodaTime = { version = '2.10.10' -> Alias {
         implementation "joda-time:joda-time:$version"
     }}
 
