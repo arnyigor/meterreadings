@@ -1,3 +1,4 @@
+include ':meteredit'
 include ':androidutils'
 include ':dataimporter'
 include ':app'

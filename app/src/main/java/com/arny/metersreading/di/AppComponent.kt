@@ -2,6 +2,7 @@ package com.arny.metersreading.di
 
 import com.arny.dataimporter.di.DataImporterModule
 import com.arny.metersreading.MetersReadingApp
+import com.arny.metersreading.meteredit.di.MetersEditModule
 import com.arny.metersreading.presentation.di.UiModule
 import dagger.BindsInstance
 import dagger.Component
@@ -15,6 +16,7 @@ import javax.inject.Singleton
         AndroidSupportInjectionModule::class,
         AppModule::class,
         DataImporterModule::class,
+        MetersEditModule::class,
         UiModule::class,
     ]
 )
