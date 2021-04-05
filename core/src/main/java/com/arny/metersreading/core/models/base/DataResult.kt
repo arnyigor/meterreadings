@@ -1,4 +1,4 @@
-package com.arny.metersreading.core.models
+package com.arny.metersreading.core.models.base
 
 import android.content.Context
 import androidx.annotation.StringRes

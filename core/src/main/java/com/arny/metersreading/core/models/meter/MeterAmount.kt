@@ -1,5 +1,5 @@
-package com.arny.dataimporter.data.model
-import com.arny.metersreading.core.models.Params
+package com.arny.metersreading.core.models.meter
+import com.arny.metersreading.core.models.base.Params
 
 data class MeterAmount(
         val id: Long? = null,

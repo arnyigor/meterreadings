@@ -1,6 +1,6 @@
-package com.arny.dataimporter.data.model
+package com.arny.metersreading.core.models.meter
 
-import com.arny.metersreading.core.models.Params
+import com.arny.metersreading.core.models.base.Params
 
 data class Tariff(
     val id: Long,

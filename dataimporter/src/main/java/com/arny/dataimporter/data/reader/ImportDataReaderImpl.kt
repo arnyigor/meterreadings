@@ -1,10 +1,10 @@
 package com.arny.dataimporter.data.reader
 
-import com.arny.dataimporter.data.model.Meter
-import com.arny.dataimporter.data.model.MeterAddress
-import com.arny.dataimporter.data.model.MeterAmount
-import com.arny.dataimporter.data.model.MeterCompany
-import com.arny.metersreading.core.models.Params
+import com.arny.metersreading.core.models.base.Params
+import com.arny.metersreading.core.models.meter.Meter
+import com.arny.metersreading.core.models.meter.MeterAddress
+import com.arny.metersreading.core.models.meter.MeterAmount
+import com.arny.metersreading.core.models.meter.MeterCompany
 import javax.inject.Inject
 
 class ImportDataReaderImpl @Inject constructor() : ImportDataReader {

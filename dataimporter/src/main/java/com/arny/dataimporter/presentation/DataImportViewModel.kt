@@ -8,8 +8,8 @@ import com.arny.dataimporter.R
 import com.arny.dataimporter.data.files.FilesRepository
 import com.arny.dataimporter.data.reader.ImportDataReader
 import com.arny.dataimporter.data.xml.DataImporter
-import com.arny.metersreading.core.models.BussinessException
 import com.arny.metersreading.core.models.DataResult
+import com.arny.metersreading.core.models.base.BussinessException
 import com.arny.metersreading.core.models.tryGetResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

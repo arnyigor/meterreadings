@@ -1,4 +1,4 @@
-package com.arny.metersreading.core.models
+package com.arny.metersreading.core.models.base
 
 import org.json.JSONArray
 import org.json.JSONException

@@ -1,4 +1,4 @@
-package com.arny.dataimporter.data.model
+package com.arny.metersreading.core.models.meter
 
 data class Meter(
         val id: Long? = null,
