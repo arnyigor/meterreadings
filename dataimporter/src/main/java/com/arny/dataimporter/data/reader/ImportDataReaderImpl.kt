@@ -5,8 +5,6 @@ import com.arny.dataimporter.data.model.MeterAddress
 import com.arny.dataimporter.data.model.MeterAmount
 import com.arny.dataimporter.data.model.MeterCompany
 import com.arny.metersreading.core.models.Params
-import org.joda.time.DateTime
-import org.joda.time.format.DateTimeFormat
 import javax.inject.Inject
 
 class ImportDataReaderImpl @Inject constructor() : ImportDataReader {
@@ -36,7 +34,7 @@ class ImportDataReaderImpl @Inject constructor() : ImportDataReader {
         val meters = getMeters(sequence)
         val companies = getCompanies(sequence)
         val amounts = getAmounts(sequence)
-        val toString = data.filter { it.first == TAG_AMOUNT }.toString()
+        val toString = data.filter { it.first != TAG_AMOUNT }.toString()
         return "flats:\n$flats,\nmeters:\n$meters,\ncompanies:\n$companies,\namounts:\n$amounts,\ndata:\n$toString"
     }
 
@@ -84,20 +82,13 @@ class ImportDataReaderImpl @Inject constructor() : ImportDataReader {
         }
     }
 
-    private fun getDateTime(date: String?): DateTime? {
-        return date?.let { dateString ->
-            DateTimeFormat.forPattern("yyyy-MM-dd").parseDateTime(dateString)
-        }
-    }
-
     private fun getAmounts(data: Sequence<Pair<String, HashMap<String, String>>>): List<MeterAmount> {
         return mutableListOf<MeterAmount>().apply {
             for ((_, value) in filteredTag(TAG_AMOUNT, data)) {
                 val id = value[TAG_ID]?.toLongOrNull() ?: 0
                 val meterId = value[TAG_METER_ID]?.toLongOrNull() ?: 0
                 val amountValue = value[TAG_AMOUNT_VALUE]
-                val date = value[TAG_AMOUNT_DATE]
-                val dateTime = getDateTime(date)?.toString("yyyy-MM-dd")
+                val dateTime = value[TAG_AMOUNT_DATE]
                 var tariffKey: String? = null
                 var tariffValue: String? = null
                 value.entries.filter { it.key == TAG_TARIFF_TITLE || it.key == TAG_TARIFF_VALUE }
@@ -113,13 +104,13 @@ class ImportDataReaderImpl @Inject constructor() : ImportDataReader {
                         }
                     }
                 val find = find { it.dateTime == dateTime && meterId == meterId }
-                var params = find?.params
+                var params = find?.data
                 if (params == null) {
                     params = Params()
                 }
                 tariffKey?.let { key ->
                     tariffValue?.let { value ->
-                        params.setParam(key, value)
+                        params.setParam("$key.${TAG_TARIFF_VALUE}", value)
                     }
                 }
                 amountValue?.let { `val` ->
@@ -127,13 +118,12 @@ class ImportDataReaderImpl @Inject constructor() : ImportDataReader {
                 }
                 add(
                     find?.copy(
-                        params = params
+                        data = params
                     ) ?: MeterAmount(
                         id = id,
                         meterId = meterId,
                         dateTime = dateTime,
-                        amount = amountValue,
-                        params = params,
+                        data = params,
                     )
                 )
             }

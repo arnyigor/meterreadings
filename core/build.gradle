@@ -13,5 +13,6 @@ android {
 dependencies {
     kotlin()
     dagger()
+    jodaTime()
     tests()
 }

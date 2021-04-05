@@ -7,7 +7,7 @@ data class MeterAmount(
         val meterId: Long? = null,
         val tariffId: Long? = null,
         val dateTime: String? = null,
-        val amount: String? = null,
-        val params: Params? = null,
+        val data: Params? = null,
+        val tariff: Tariff? = null,
         val comment: String? = null
 )
