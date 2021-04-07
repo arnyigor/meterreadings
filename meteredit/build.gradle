@@ -22,5 +22,6 @@ dependencies {
     navigation()
     lifecycle()
     dagger()
-    tests()
+    unitTests()
+    androidTests()
 }

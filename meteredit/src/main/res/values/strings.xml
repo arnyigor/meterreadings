@@ -4,4 +4,5 @@
     <string name="choose">Выбрать</string>
     <string name="tariff">Тариф</string>
     <string name="save">Сохранить</string>
+    <string name="meter_edit">Редактирование</string>
 </resources>

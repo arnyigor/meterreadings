@@ -2,12 +2,11 @@ package com.arny.metersreading.presentation.home
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.arny.metersreading.R
+import com.arny.metersreading.core.models.meter.Meter
 import com.arny.metersreading.databinding.FragmentHomeBinding
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
@@ -22,6 +21,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onAttach(context)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.clear()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,7 +43,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.fabAdd.setOnClickListener {
-            view.findNavController().navigate(HomeFragmentDirections.actionNavHomeToNavEdit())
+            view.findNavController().navigate(HomeFragmentDirections.actionNavHomeToEditFlow(Meter(title = "meter1")))
         }
     }
 }

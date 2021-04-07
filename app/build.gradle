@@ -28,7 +28,8 @@ dependencies {
     navigation()
     lifecycle()
     dagger()
-    tests()
+    unitTests()
+    androidTests()
 }
 
 android.applicationVariants.all { variant ->

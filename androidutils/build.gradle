@@ -13,5 +13,6 @@ android {
 dependencies {
     kotlin()
     lifecycle()
-    tests()
+    unitTests()
+    androidTests()
 }

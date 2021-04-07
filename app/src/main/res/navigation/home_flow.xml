@@ -11,12 +11,14 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_nav_home_to_nav_edit"
-            app:destination="@id/nav_edit"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            android:id="@+id/action_nav_home_to_edit_flow"
+            app:destination="@id/edit_flow">
+            <argument
+                android:name="meter"
+                android:defaultValue="@null"
+                app:argType="com.arny.metersreading.core.models.meter.Meter"
+                app:nullable="true" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/nav_preferences"
@@ -35,8 +37,5 @@
         android:name="com.arny.dataimporter.presentation.DataImportFragment"
         android:label="@string/import_title"
         tools:layout="@layout/data_import_fragment" />
-    <fragment
-        android:id="@+id/nav_edit"
-        android:name="com.arny.metersreading.meteredit.presentation.edit.MetersEditFragment"
-        android:label="MetersEditFragment"/>
+    <include app:graph="@navigation/edit_flow" />
 </navigation>
