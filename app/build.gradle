@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
 }
 apply from: "$rootProject.projectDir/ktlint.gradle"
 apply from: "$dep_aliases"

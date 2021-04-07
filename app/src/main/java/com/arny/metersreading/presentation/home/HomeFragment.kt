@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.arny.metersreading.R
 import com.arny.metersreading.databinding.FragmentHomeBinding
 import dagger.android.support.AndroidSupportInjection
@@ -32,11 +33,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        homeViewModel.text.observe(viewLifecycleOwner, {
-            binding.tvHome.text = it
-        })
-        binding.tvHome.setOnClickListener {
-            homeViewModel.import()
+        binding.fabAdd.setOnClickListener {
+            view.findNavController().navigate(HomeFragmentDirections.actionNavHomeToNavEdit())
         }
     }
 }

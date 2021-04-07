@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
 }
 apply from: "$rootProject.projectDir/ktlint.gradle"
 apply from: "$dep_aliases"
@@ -12,8 +13,6 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation project(path: ':androidutils')
     implementation project(path: ':core')
     kotlin()
